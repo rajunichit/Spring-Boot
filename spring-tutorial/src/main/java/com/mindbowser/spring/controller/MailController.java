@@ -1,19 +1,21 @@
 package com.mindbowser.spring.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mindbowser.spring.mail.MailSender;
-import com.mindbowser.spring.mail.MockMailSender;
 
 @RestController
 public class MailController {
 
-	MailSender mockMailSender = new MockMailSender();
+	@Resource
+	MailSender mailSender;
 
 	@RequestMapping("/mail")
 	public String home() {
-		mockMailSender.send("raju.nichit@mindbowser.com", "Spring Developer", "Test email body");
+		mailSender.send("raju.nichit@mindbowser.com", "Spring Developer", "Test email body");
 		return "Mail sent";
 	}
 }
