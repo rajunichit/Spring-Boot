@@ -10,7 +10,7 @@ import com.mindbowser.spring.mail.MailSender;
 @RestController
 public class MailController {
 
-	@Resource
+	@Resource(name = "smtpMailSender")
 	MailSender mailSender;
 
 	@RequestMapping("/mail")
